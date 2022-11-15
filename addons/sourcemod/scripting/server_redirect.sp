@@ -486,8 +486,8 @@ void AdvertiseServer(ServerEntry se)
 		if(gSocketAvaliable)
 		{
 			Format(buff, sizeof(buff), "%T", "servers_menu_server_entry_slots_count", i, (se.curr_players == 0 ? se.curr_players_info : se.curr_players), se.maxplayers);
-			PrintToChatColored(i, "%t", "server_advertisement_server_name", se.display_name);
-			PrintToChatColored(i, "%t", "server_advertisement_server_stats", buff, se.GetDisplayIP());
+			PrintToChatColored(i, "%t", "server_advertisement_server_name", se.display_name, se.map, buff);
+			PrintToChatColored(i, "%t", "server_advertisement_server_stats", buff, se.map);
 		}
 		else
 		{
@@ -845,7 +845,7 @@ public int ServerInfo_Menu(Menu menu, MenuAction action, int param1, int param2)
 							if(!IsClientConnected(i) || !IsClientInGame(i) || IsFakeClient(i))
 								continue;
 							
-							PrintToChatColored(i, "%t", "server_advertisement_leave", param1, se.GetDisplayIP());
+							PrintToChatColored(i, "%t", "server_advertisement_leave", param1, se.display_name);
 						}
 					}
 					
